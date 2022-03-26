@@ -8,9 +8,10 @@ var enemyNames= ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth= 50;
 var enemyAttack = 12;
 
-console.log(enemyNames[i]);
-console.log(i);
-console.log(enemyNames[i] + " is at " + i + " index ");
+console.log(enemyNames);
+console.log(enemyNames.length);
+console.log(enemyNames[0]);
+console.log(enemyNames[3]);
 
 // You can also log multiple values at once like this 
 console.log(playerName, playerAttack, playerHealth);
@@ -20,13 +21,6 @@ console.log(playerName, playerAttack, playerHealth);
 //  * Fight all enemy-robots
 //  * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
-
-
-
-
-
-
-
 
 var fight = function(enemyName) {
     // repeat and execute as long as the enemy-robot is alive
@@ -75,7 +69,17 @@ console.log(
 );
 
 //check player's health
+if (playerHealth <= 0) {
+    window.alert(playerName + " has died!");
+    break;
+} else {
+    window.alert(playerName + " still has " + playerHealth + " health left.");
+    } 
+  }
+};
 
+for(var i = 0; i < enemyNames.length; i++) {
+// if player is still alive keep fighting
 if (playerHealth > 0) {
     // let player know what round thet are in,
     window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
@@ -92,10 +96,11 @@ if (playerHealth > 0) {
     // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
     fight(pickedEnemyName);
 }
-
+// if player isn't alive stop the game
 else {
     window.alert("You have lost your robot in battle! Game Over!");
     break;
+}
 }
 
 
@@ -106,36 +111,24 @@ else {
 
 
 
-if (playerHealth <= 0) {
-    window.alert(playerName + " has died!");
-    break;
-} else {
-    window.alert(playerName + " still has " + playerHealth + " health left.");
-} 
 
 
 
 
 
-  } // end of while loop
-}; // end of fight function
 
 
-// CALLING FUNCTION??????
-for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(pickedEnemyName);
-
-    // call fight function wiht enemy-robot
-    fight(enemyNames[i]);
-     
-    }
-    //fight function statements
-
-for (var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
 
 
-}   
+
+
+
+
+
+
+
+
+
+
+
 
