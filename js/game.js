@@ -3,32 +3,35 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney= 10;
 
+var enemyNames= ["Roborto", "Amy Android", "Robo Trumble"];
+
+var enemyHealth= 50;
+var enemyAttack = 12;
+
+console.log(enemyNames[i]);
+console.log(i);
+console.log(enemyNames[i] + " is at " + i + " index ");
+
+// You can also log multiple values at once like this 
+console.log(playerName, playerAttack, playerHealth);
+
 // Game States
 // "WIN" - Player robot has defeaated all enemy-robots
 //  * Fight all enemy-robots
 //  * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
 
-// You can also log multiple values at once like this 
-console.log(playerName, playerAttack, playerHealth);
 
-var enemyNames= ["Roborto", "Amy Android", "Robo Trumble"];
 
-for(var i=0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyNames[i] + " is at " + i + " index ");
-}
 
-var enemyHealth= 50;
-var enemyAttack = 12;
+
+
+
 
 var fight = function(enemyName) {
-    //fight function statements
-// Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators");
-
-// ask player if they'd like to fight or run
+    // repeat and execute as long as the enemy-robot is alive
+    while(enemyHealth > 0) {
+    // ask player if they'd like to fight or run
     var promptFight = window.prompt("Would you like to Fight or Skip this battle? Enter 'FIGHT' OR 'SKIP' to choose.");
 
 //if player choses to fight, then fight
@@ -70,16 +73,50 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
         // subtract money from playerMoney for skipping
         playerMoney = playerMoney - 2;
     }
+
     //if no(false), ask question again by running fight() again 
     else {
         fight();
     }
+
      // if player did not chose 1 or 2 in prompt
     } else {
         window.alert("You need to pick a valid option. Try again!");
       }
 };
+    
+
+
+for(var i = 0; i < enemyNames.length; i++) {
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    fight(pickedEnemyName);
+
+
+    // call fight function wiht enemy-robot
+    fight(enemyNames[i]);
+  
+}
+
+
+
+
+
+
+    
+    }
+    //fight function statements
+
+
+
 for (var i = 0; i < enemyNames.length; i++) {
     fight(enemyNames[i]);
+  
+
+
+
+
+
+
 }   
 
