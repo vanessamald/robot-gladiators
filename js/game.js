@@ -1,35 +1,6 @@
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
-<<<<<<< HEAD
-
-// You can also log multiple values at once like this 
-console.log(playerName, playerAttack, playerHealth);
-
-var enemyName= "Roborto";
-var enemyHealth= 50;
-var enemyAttack = 12;
-
-var fight = function() {
-// Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators");
-
-// Subtract the value of 'playerAttack' from the value of 'enemyHealth' and use that result to update the value in the 'enemyHealth' variable 
-enemyHealth = enemyHealth - playerAttack;
-
-// Log a resulting message to the console so we know that it worked. 
-    playerName + "attacked" + enemyNAme + " . " + enemyName + " now has " + enemyHealth + " health remaining. "
-
-// Subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result to update the value in the 'playerHealth' variable.
-
-
-// Log a resulting message to the console so we know that it worked. 
-
-
-};
-
-fight();
-=======
 var playerMoney= 10;
 
 var enemyNames= ["Roborto", "Amy Android", "Robo Trumble"];
@@ -130,6 +101,17 @@ var startGame= function() {
 
     // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
     fight(pickedEnemyName);
+
+    // if player is still alive and we're not at the last enemy in the array
+    if (playerHealth > 0 && i < enemyNames.length - 1) {
+        // ask if player wants to use the store before next round
+        var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+        
+        // if yes, take them to the store() function
+        if (storeConfirm) {
+            shop();
+        }    
+    }
 }
 // if player isn't alive stop the game
         else {
@@ -140,9 +122,6 @@ var startGame= function() {
     // play again
     endGame();
 };
-
-// start the game when the page loads
-startGame();
 
 // function to end the entire game
 var endGame = function () {
@@ -166,33 +145,59 @@ else {
     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
 }
 
+// go to shop between battle functions
+var shop = function() {
+    //ask player what they'd like to do
+    var shopOptionPrompt = window.promt(
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL'. 'UPGRADE', or 'LEAVE' to make a choice. "
+    );
+};
+
+// use switch to carry out action
+switch (shopOptionPrompt) {
+    case "refill":
+        if (playerMoney >= 7) {
+        window.alert("Refilling player's health by 20 for 7 dollars.");
+
+        // increase health and decrese money
+        playerHealth = playerHealth + 20;
+        playerMoney = playerMoney - 7;
+        }
+        else {
+            window.alert("You don't have enough money!");
+        }
+
+        break;
+    case "upgrade":
+        if (playerMoney >= 7) {
+            window.alert("Upgrading player's attack by 6 or 7 dollars.");
+
+        // increase attack and decrease money
+        playerAttack = playerAttack + 6;
+        playerMoney = playerMoney - 7;
+        }
+        else {
+            window.alert("You don't have enough money!");
+        }
+        
+        break;
+    
+    case "LEAVE": // new case
+    case "leave":
+        window.alert("Leaving the store.");
+        break;
+    default:
+        window.alert("You did not pick a valid option. Try again.");
+        // call shop() again to force player to pick a valid option
+        shop();
+        break;
+    }
+
+        // do nothing , so function will end
+        break;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> feature/initial-game
+// start the game when the page loads
+startGame();
 
