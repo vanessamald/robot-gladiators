@@ -113,36 +113,11 @@ var fight = function(enemy) {
             window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
         }
     }
-<<<<<<< HEAD
-}
-    
-    var enemyInfo = [
-        {
-        name: "Roborto",
-        attack: randomNumber(10, 14)
-        },
-        {
-        name: "Amy Android",
-        attack: randomNumber(10, 14)
-        },
-        {
-        name: "Robo Trumble",
-        attack: randomNumber(10, 14)
-        }
-    ];
-
-console.log(enemyInfo);
-console.log(enemyInfo[0]);
-console.log(enemyInfo[0].name);
-console.log(enemyInfo[0]['attack']);
-
-=======
         // switch turn order for next round
         isPlayerTurn = !isPlayerTurn;
         }
     };
     
->>>>>>> develop
 // function to start a new game
 var startGame= function() {
     // reset player stats
@@ -193,18 +168,10 @@ var startGame= function() {
 var endGame = function () {
     window.alert("The game has now ended. Let's see how you did!");
 
-<<<<<<< HEAD
-    // if player is still alive, player wins!
-    if (playerInfo.health > 0) {
-        window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
-    } else {
-        window.alert("You've lost your robot in battle.");
-=======
     // check lolcalStorage for high score, if it's not there, use 0
     var highScore = localStorage.getItem("highscore");
     if (highScore === null) {
         highScore = 0;
->>>>>>> develop
     }
 
     // if player has more money than the high score, player has new high score!
@@ -217,12 +184,6 @@ var endGame = function () {
     else {
         alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");   
     }
-
-
-
-
-
-
 
 // ask the player if they'd like to play again
 var playAgainConfirm = window.confirm("Would you like to play again?");
