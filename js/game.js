@@ -4,16 +4,58 @@
 //  * Defeat each enemy-robot
 // "LOSE" - Player robot's health is zero or less
 
-var fight = function(enemy) {
-    // repeat and execute as long as the enemy-robot is alive
-    while(playerInfo.health >0 && enemy.Health > 0) {
-    // ask player if they'd like to fight or run
-    var promptFight = window.prompt("Would you like to Fight or Skip this battle? Enter 'FIGHT' OR 'SKIP' to choose.");
+var fightOrSkip = function() {
+    // ask player if they'd like to fight or skip using fightOrSkip function
+    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
-    //if player choses to skip 
-    if (promptFight === "skip" || promptFight === "SKIP") {
-    // confirm player wants to skip
-    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+    // conditional recursive function call 
+    if (prompt.Fight === "" || promptFight === null) {
+        window.alert("You need to provide a valid answer! Please try again.");
+        return fightOrSkip();
+    }
+
+    promptFight = promptFight.toLowerCase();
+    // if player picks "skip" confirm and then stop the loop
+    if (promptFight === "skip") {
+        //confirm player wants to skip
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+        // if yes (true), leave fight
+        if (confirmSkip) {
+            window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
+            //subtract money from playerMoney for skipping
+            playerInfo.playerMoney = playerInfo.money - 10;
+            //stop while loop using break; and enter next fight
+            
+            // return true if player wants to leave
+            return true;
+        }
+    }
+    return false;
+};
+
+var fight = function(enemy) {
+    //repeat and execute as long as the enemy-robot is alive
+
+    //keep track of who goes first
+    var isPlayerTurn = true;
+
+    //randomly change turn order
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
+    
+    while (playerInfo.health > 0 && enemy.health > 0) {
+        if (isPlayerTurn) {
+        // ask player if they want to fight or skip 
+        if (fightOrSkip()) {
+            // if true leave fight by breaking loop
+            break;
+        } 
+
+        var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
+    
+
 
     //if yes(true), leave fight
     if (confirmSkip) {
